@@ -147,9 +147,18 @@ void mokinys::VarduPavardziuGeneravimas(mokinys & M, int indeksas){
 }
 
 void testavimas(){
-    mokinys a, b;
+    mokinys a{"Tom", "tom", {3, 5, 6}}, b{"Dom", "Dom", {3, 5, 6}};
 
-    assert();
+    //Copy constructor
+    mokinys c{a};
+    assert(a.vard() == c.vard());
+    assert(a.pavard() == c.pavard());
+    assert(a.pavard() == c.pavard());
+
+    mokinys& A = (a = b);
+    assert(&A == &a);
+    
+    
 
 
 }

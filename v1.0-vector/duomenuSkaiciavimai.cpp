@@ -227,4 +227,5 @@ mokinys operator+(const mokinys& a, const mokinys& b){
 
 mokinys::~mokinys(){
     tarpiniaiRezultatai.clear();
+    cout<<"Objektas sunaikintas\n";
 }
