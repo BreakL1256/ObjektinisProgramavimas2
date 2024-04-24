@@ -153,7 +153,7 @@ mokinys::mokinys(const mokinys& m)
   vidurkis{m.vidurkis},
   mediana{m.vidurkis}
 {
-    cout<<"atlikta objekto kopija naudojant copy constructor\n";
+    //cout<<"atlikta objekto kopija naudojant copy constructor\n";
 };
 
 mokinys::mokinys(mokinys&& m)
@@ -167,7 +167,7 @@ mokinys::mokinys(mokinys&& m)
     egzaminoRezultatas = 0;
     m.vidurkis = 0;
     m.mediana = 0;
-    cout<<"atlikta objekto perrasymas naudojant move constructor\n";
+    //cout<<"atlikta objekto perrasymas naudojant move constructor\n";
 }; 
 
 mokinys& mokinys::operator=(const mokinys& m){
@@ -213,6 +213,16 @@ ostream& operator<<(ostream& out, const mokinys& m){
     out<<"egzamino rezultatas/vidurkis/mediana: ";
     out<<m.egzaminoRezultatas<<" "<<m.vidurkis<<" "<<m.mediana<<endl;
     return out;
+};
+
+mokinys operator+(const mokinys& a, const mokinys& b){
+    mokinys c;
+    c.setVardas(a.vard()+" "+b.vard());
+    c.setPavarde(a.pavard()+" "+b.pavard());
+    c.tarpRezultatai().reserve(a.tarpRezultatai().size() + b.tarpRezultatai().size());
+    c.tarpRezultatai().insert(c.tarpRezultatai().end(), a.tarpRezultatai().begin(), a.tarpRezultatai().end());
+    c.tarpRezultatai().insert(c.tarpRezultatai().end(), b.tarpRezultatai().begin(), b.tarpRezultatai().end());
+    return c;
 };
 
 mokinys::~mokinys(){

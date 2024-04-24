@@ -1,8 +1,4 @@
 #include "skaiciavimai.h"
-// #include <string>
-// #include <vector>
-// #include <iostream>
-// #include <sstream>
 
 using namespace std;
 
@@ -148,4 +144,12 @@ void mokinys::VarduPavardziuGeneravimas(mokinys & M, int indeksas){
             v = 97 + (double)rand()/RAND_MAX * (122-97);
         M.pavarde.push_back(v);
     }
+}
+
+void testavimas(){
+    mokinys a, b;
+
+    assert();
+
+
 }
