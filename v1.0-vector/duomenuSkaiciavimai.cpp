@@ -164,6 +164,9 @@ mokinys::mokinys(mokinys&& m)
   vidurkis{m.vidurkis},
   mediana{m.vidurkis}
 {
+    vardas = "";
+    pavarde = "";
+    fill_n(m.tarpiniaiRezultatai.begin(), m.tarpiniaiRezultatai.size(), 0);
     egzaminoRezultatas = 0;
     m.vidurkis = 0;
     m.mediana = 0;
@@ -189,6 +192,7 @@ mokinys& mokinys::operator=(mokinys&& m){
     egzaminoRezultatas = m.egzaminoRezultatas;
     vidurkis = m.vidurkis;
     mediana = m.mediana;
+    egzaminoRezultatas = 0;
     m.vidurkis = 0;
     m.mediana = 0;
     return *this;

@@ -147,18 +147,69 @@ void mokinys::VarduPavardziuGeneravimas(mokinys & M, int indeksas){
 }
 
 void testavimas(){
-    mokinys a{"Tom", "tom", {3, 5, 6}}, b{"Dom", "Dom", {3, 5, 6}};
+    try{
+        mokinys a{"Tom", "tom", {3, 5, 6}}, b{"Tom", "Tom", {3, 5, 6}};
 
-    //Copy constructor
-    mokinys c{a};
-    assert(a.vard() == c.vard());
-    assert(a.pavard() == c.pavard());
-    assert(a.pavard() == c.pavard());
+        //Copy constructor
+        mokinys c{a};
+        vector<int> aVec = a.tarpRezultatai();
+        vector<int> cVec = c.tarpRezultatai();
 
-    mokinys& A = (a = b);
-    assert(&A == &a);
+        if(a.vard() != c.vard() || a.pavard() != c.pavard() || aVec.size() != cVec.size()) throw std::runtime_error("Copy constructor neveikia tvarkingai!");
     
-    
+        for (int i = 0; i < aVec.size(); ++i) {
+            if(aVec[i] != cVec[i]) {
+                throw std::runtime_error("Copy constructor neveikia tvarkingai!");
+                break;
+            }
+        }
 
+        //Move constructor
+        mokinys d{move(b)};
 
+        if(b.vard() != "" || b.pavard() != "" || !b.tarpRezultatai().empty()) throw std::runtime_error("Move constructor neveikia tvarkingai!");       
+        
+        vector<int> dVec = a.tarpRezultatai();
+
+        if(d.vard() != a.vard() || d.pavard() != a.pavard() || aVec.size() != dVec.size())  throw std::runtime_error("Move constructor neveikia tvarkingai!");
+        
+        for (int i = 0; i < dVec.size(); ++i) {
+            if(dVec[i] != aVec[i]) {
+                throw std::runtime_error("Move constructor neveikia tvarkingai!");
+                break;
+            }
+        }
+
+        //copy assignment operator
+        b = a;
+
+        vector<int> bVec = b.tarpRezultatai();
+
+        if(a.vard() != b.vard() || a.pavard() != b.pavard() || aVec.size() != bVec.size()) throw std::runtime_error("Copy assignment operator neveikia tvarkingai!");
+
+        for (int i = 0; i < bVec.size(); ++i) {
+            if(bVec[i] != aVec[i]) {
+                throw std::runtime_error("Copy assignment operator neveikia tvarkingai!");
+                break;
+            }
+        }
+
+        //Move assignment operator
+        b = mokinys{"Dom","Dom", {1, 4, 5}};
+
+        b = move(a);
+
+        if(a.vard() != "" || a.pavard() != "" || !a.tarpRezultatai().empty()) throw std::runtime_error("Move assignment operator neveikia tvarkingai!");
+
+        if(d.vard() != b.vard() || d.pavard() != b.pavard() || bVec.size() != dVec.size())  throw std::runtime_error("Move assignment operator neveikia tvarkingai!");
+
+        for (int i = 0; i < dVec.size(); ++i) {
+            if(dVec[i] != bVec[i]) {
+                throw std::runtime_error("Move assignment operator neveikia tvarkingai!");
+                break;
+            }
+        }
+    }catch(const exception& e){
+        cerr<<"Klaida: "<<e.what();
+    }
 }
