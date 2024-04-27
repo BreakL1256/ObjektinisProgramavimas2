@@ -212,6 +212,7 @@ void testavimas(){
         //Ivesties operatorius
         mokinys e;
         if(!(cin>>e)) throw std::runtime_error("Ivesties operatorius neveikia tvarkingai!");
+        //Isvesties operatorius
         if(!(cout<<e)) throw std::runtime_error("Isvesties operatorius neveikia tvarkingai!");
     }catch(const exception& e){
         cerr<<"Klaida: "<<e.what()<<endl;
