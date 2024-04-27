@@ -151,7 +151,7 @@ mokinys::mokinys(const mokinys& m)
   tarpiniaiRezultatai{m.tarpiniaiRezultatai},
   egzaminoRezultatas{m.egzaminoRezultatas},
   vidurkis{m.vidurkis},
-  mediana{m.vidurkis}
+  mediana{m.mediana}
 {
     //cout<<"atlikta objekto kopija naudojant copy constructor\n";
 };
@@ -162,12 +162,12 @@ mokinys::mokinys(mokinys&& m)
   tarpiniaiRezultatai{move(m.tarpiniaiRezultatai)},
   egzaminoRezultatas{m.egzaminoRezultatas},
   vidurkis{m.vidurkis},
-  mediana{m.vidurkis}
+  mediana{m.mediana}
 {
-    vardas = "";
-    pavarde = "";
+    m.vardas = "";
+    m.pavarde = "";
     fill_n(m.tarpiniaiRezultatai.begin(), m.tarpiniaiRezultatai.size(), 0);
-    egzaminoRezultatas = 0;
+    m.egzaminoRezultatas = 0;
     m.vidurkis = 0;
     m.mediana = 0;
     //cout<<"atlikta objekto perrasymas naudojant move constructor\n";

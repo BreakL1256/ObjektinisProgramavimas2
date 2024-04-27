@@ -148,7 +148,7 @@ void mokinys::VarduPavardziuGeneravimas(mokinys & M, int indeksas){
 
 void testavimas(){
     try{
-        mokinys a{"Tom", "tom", {3, 5, 6}}, b{"Tom", "Tom", {3, 5, 6}};
+        mokinys a{"Tom", "Tom", {3, 5, 6}}, b{"Tom", "Tom", {3, 5, 6}};
 
         //Copy constructor
         mokinys c{a};
@@ -167,15 +167,15 @@ void testavimas(){
         //Move constructor
         mokinys d{move(b)};
 
-        if(b.vard() != "" || b.pavard() != "" || !b.tarpRezultatai().empty()) throw std::runtime_error("Move constructor neveikia tvarkingai!");       
+        if(b.vard() != "" || b.pavard() != "" || !b.tarpRezultatai().empty()) throw std::runtime_error("Move constructor neveikia tvarkingai_1!");       
         
-        vector<int> dVec = a.tarpRezultatai();
+        vector<int> dVec = d.tarpRezultatai();
 
-        if(d.vard() != a.vard() || d.pavard() != a.pavard() || aVec.size() != dVec.size())  throw std::runtime_error("Move constructor neveikia tvarkingai!");
+        if(d.vard() != a.vard() || d.pavard() != a.pavard() || aVec.size() != dVec.size())  throw std::runtime_error("Move constructor neveikia tvarkingai_2!");
         
         for (int i = 0; i < dVec.size(); ++i) {
             if(dVec[i] != aVec[i]) {
-                throw std::runtime_error("Move constructor neveikia tvarkingai!");
+                throw std::runtime_error("Move constructor neveikia tvarkingai_3!");
                 break;
             }
         }
@@ -210,6 +210,6 @@ void testavimas(){
             }
         }
     }catch(const exception& e){
-        cerr<<"Klaida: "<<e.what();
+        cerr<<"Klaida: "<<e.what()<<endl;
     }
 }
