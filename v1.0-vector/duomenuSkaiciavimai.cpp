@@ -192,17 +192,23 @@ mokinys& mokinys::operator=(mokinys&& m){
     egzaminoRezultatas = m.egzaminoRezultatas;
     vidurkis = m.vidurkis;
     mediana = m.mediana;
-    egzaminoRezultatas = 0;
+    m.vardas = "";
+    m.pavarde = "";
+    fill_n(m.tarpiniaiRezultatai.begin(), m.tarpiniaiRezultatai.size(), 0);
+    m.egzaminoRezultatas = 0;
     m.vidurkis = 0;
     m.mediana = 0;
     return *this;
 };
 
 istream& operator>>(istream& in, mokinys& m){
-    in>>m.vardas>>m.pavarde;
-    int skaic = 0;
-    while(in.good()){
-        in>>skaic;
+    string eilute;
+    in.ignore(1000, '\n');
+    getline(in, eilute);
+    istringstream iss(eilute);
+    iss >> m.vardas >> m.pavarde;
+    int skaic;
+    while (iss >> skaic) {
         m.tarpiniaiRezultatai.push_back(skaic);
     }
     return in;
@@ -212,9 +218,9 @@ ostream& operator<<(ostream& out, const mokinys& m){
     out<<m.vardas<<" "<<m.pavarde<<endl;
     out<<"pažymiai: ";
     for(int i: m.tarpiniaiRezultatai){
-        cout<<i<<" ";
+        out<<i<<" ";
     }
-    out<<"egzamino rezultatas/vidurkis/mediana: ";
+    out<<"\negzamino rezultatas/vidurkis/mediana:\n";
     out<<m.egzaminoRezultatas<<" "<<m.vidurkis<<" "<<m.mediana<<endl;
     return out;
 };
