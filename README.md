@@ -36,6 +36,9 @@ CPU - AMD Ryzen 5 6600HS Creator Edition <br />
 RAM - 16 GB <br /> 
 SSD - 500 GB <br /> 
 
+## Paleidžiamojo failo dydis:
+GradeVector.exe - 254 KB
+
 ## Tyrimas (klasės ir struktūros): 
 ### Aprašymas
 Tyrimai padaryti pirmiausia su struktūromis (po 2 bandymus) ir po to su klasėmis (po 2 bandymus).
