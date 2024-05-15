@@ -136,3 +136,11 @@ void mokinys::EgzaminoRezultatoGavimas(mokinys & M, int indeksas){
         M.tarpiniaiRezultatai.pop_back();
     }
 }
+
+mokinys::mokinys(){
+    vardas = "";
+    pavarde = "";
+    egzaminoRezultatas = 0;
+    vidurkis = 0;
+    mediana = 0;
+}

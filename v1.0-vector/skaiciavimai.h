@@ -28,7 +28,7 @@ class mokinys{
         double vidurkis;
         double mediana;
     public: 
-        mokinys(){}
+        mokinys();
         inline string vard() const { return vardas; }   
         inline string pavard() const { return pavarde; }  
         inline vector<int>& tarpRezultatai() {return tarpiniaiRezultatai; }
